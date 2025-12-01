@@ -6,7 +6,7 @@ def valiateQuery(data):
     try:
         if "Question" in data:
             if data["Question"] != "":
-                return ConnectChatBot(data)
+                return ConnectCkhatBot(data)
             else:
                 return {
                     "message":"Invaild data !",

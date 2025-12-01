@@ -5,17 +5,11 @@ from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 load_dotenv()
 
-llm = ChatOpenAI(
-    model=os.getenv("MODEL"),
-    temperature=0,
-    openai_api_key=os.getenv("API_KEY"),
-    openai_api_base=os.getenv("API_BASE_URL")
-)
+llm = ChatOpenAI(model=os.getenv("MODEL"),temperature=0,openai_api_key=os.getenv("API_KEY"),openai_api_base=os.getenv("API_BASE_URL"))
 memory = ConversationSummaryMemory(llm=llm)
 
 def ConnectChatBot(data: str):
     try:
-        print(data["Question"])
         if not isinstance(data["Question"], str):
             return {
                 "Error": "Question must be a string",
@@ -28,7 +22,7 @@ def ConnectChatBot(data: str):
             base_url=os.getenv("API_BASE_URL"),
             api_key=os.getenv("API_KEY"),
         )        
-        system_content = "You are a helpful assistant."
+        system_content = "You are a helpful assistant to Thirumurugan Subramaniyan, and your name is Thirumurugan Subramaniyan."
         if history_text:
             system_content += f"\n\nConversation summary so far:\n{history_text}"
         response = client.chat.completions.create(

@@ -1,0 +1,1 @@
+CREATE TABLE aboout_company (id SERIAL PRIMARY KEY,about TEXT NOT NULL,description TEXT,vectors VECTOR(3072));
